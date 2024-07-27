@@ -11,6 +11,7 @@ public class CompanyServerAppl {
 	private static final int PORT = 5000;
 
 	public static void main(String[] args) {
+		
 		Company company = new CompanyMapsImpl();
 		try {
 			((Persistable)company).restore(FILE_NAME);
