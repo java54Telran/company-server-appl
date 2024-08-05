@@ -38,11 +38,15 @@ import static telran.net.TcpConfigurationProperties.*
 				if (line != null && line.equals(SHUTDOWN)) {
 					running = false;
 					tcpServer.shutdown();
+					serverThread.join(); //make sure all TCP related threads have been finished
 					if (persistable != null) {
 						persistable.save(FILE_NAME);
 					}
 				}
 			}
+		} 
+		catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
